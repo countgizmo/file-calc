@@ -1,4 +1,5 @@
 (ns file-calc.core
+  (:gen-class)
   (:require [clojure.string :as str]))
 
 (def operations-fns
@@ -32,5 +33,7 @@
  [filename]
  (str/split-lines (slurp filename)))
 
-
-(-> (file->coll "resources/example") calculate)
+(defn -main [& args]
+  (-> (file->coll (first args))
+      (calculate)
+      (println)))
