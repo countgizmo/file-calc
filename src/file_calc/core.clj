@@ -27,3 +27,10 @@
  [coll]
  (->> (map str->fn coll)
       (reduce (fn [res op] (op res)) 0)))
+
+(defn file->coll
+ [filename]
+ (str/split-lines (slurp filename)))
+
+
+(-> (file->coll "resources/example") calculate)
